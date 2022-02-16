@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+		<title th:text= "${title}"></title>
+	</head>
+	<body>
+		<h1 th:text="${title}"></h1>	
+		<form th:action="@{/people/create}" th:object="${people}" method="post">
+		    <fieldset>
+		        <legend>Datos del personaje</legend>
+		        <table class="table_form">
+		        
+                <tr>
+               		<td class="td_form"> <label>Nombre: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{name}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Fecha de nacimiento: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{birthYear}"></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Color de ojos: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{eyeColor}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Color de piel: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{skinColor}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Color de pelo: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{hairColor}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Género: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{gender}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Altura: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{height}" maxlength=100/></td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Peso: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{mass}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Planeta: </label> </td>    
+	                <td class="td_form"><select th:field="${people.planets}"> 
+	                	<option th:each="p :${planets}" th:value="${p.getCodigo()}" th:text="${p.name}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Naves: </label> </td>    
+	                <td class="td_form"><select th:field="${people.starships}" multiple="multiple"> 
+	                	<option th:each="s :${starships}" th:value="${s.getCodigo()}" th:text="${s.name}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Vehículos: </label> </td>    
+	                <td class="td_form"><select th:field="${people.vehicles}" multiple="multiple"> 
+	                	<option th:each="v :${vehicles}" th:value="${v.getCodigo()}" th:text="${v.name}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Especie: </label> </td>    
+	                <td class="td_form"><select th:field="${people.species}" multiple="multiple"> 
+	                	<option th:each="sp :${species}" th:value="${sp.getCodigo()}" th:text="${sp.name}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Films: </label> </td>    
+	                <td class="td_form"><select th:field="${people.films}" multiple="multiple"> 
+	                	<option th:each="f :${films}" th:value="${f.getCodigo()}" th:text="${f.title}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	             <tr>
+	                <td>
+	                    <button class="submit_button" type="submit">Registrar</button>
+	                </td>
+	            </tr>
+	            
+		        </table>
+		    </fieldset>
+		</form>
+		<table class="table_form">
+	       <tr>
+	           <td class="td_form"><a class="back_button" th:href="@{/people}">Volver</a></td>
+	       </tr>
+    	</table>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+		<title th:text= "${title}"></title>
+	</head>
+	<body>
+		<h1 th:text="${title}"></h1>	
+		<form th:action="@{/vehicles/update}" th:object="${vehicles}" method="post">
+		    <fieldset>
+		        <legend>Datos del personaje</legend>
+		        <table class="table_form">
+		        <tr>
+               		<td class="td_form"> <label></label> </td>    
+	                <td class="td_form"> <input type="hidden" th:field="*{codigo}"/></td>	
+	            </tr>
+                <tr>
+               		<td class="td_form"> <label>Nombre: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{name}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Modelo: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{model}"></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Clase: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{vehicleClass}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Creador: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{manufacturer}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Longitud: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{length}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Coste en créditos: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{costInCredits}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Tripulación: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{crew}" maxlength=100/></td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Pasajeros: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{passengers}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Máx velocidad atmosférica: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{maxAtmospheringSpeed}"/></td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Capacidad de carga: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{cargoCapacity}"/></td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Consumibles: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{consumables}"/></td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Edición: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{edited}" th:readonly="*{edited}"/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Creación: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{created}" th:readonly="*{created}"/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Personajes: </label> </td>    
+	                <td class="td_form"><select th:field="${vehicles.people}" multiple="multiple"> 
+	                	<option th:each="p :${people}" th:value="${p.getCodigo()}" th:text="${p.name}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Películas: </label> </td>    
+	                <td class="td_form"><select th:field="${vehicles.films}" multiple="multiple"> 
+	                	<option th:each="f :${films}" th:value="${f.getCodigo()}" th:text="${f.title}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	        
+	             <tr>
+	                <td>
+	                    <button class="submit_button" type="submit">Registrar</button>
+	                </td>
+	            </tr>
+	            
+		        </table>
+		    </fieldset>
+		</form>
+		<table class="table_form">
+	       <tr>
+	           <td class="td_form"><a class="back_button" th:href="@{/vehicles}">Volver</a></td>
+	       </tr>
+    	</table>
+	</body>
+</html>

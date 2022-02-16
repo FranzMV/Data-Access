@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+		<title th:text= "${title}"></title>
+	</head>
+	<body>
+		<h1 th:text="${title}"></h1>	
+		<form th:action="@{/species/update}" th:object="${species}" method="post">
+		    <fieldset>
+		        <legend>Datos de las species</legend>
+		        <table class="table_form">
+		        <tr>
+               		<td class="td_form"> <label></label> </td>    
+	                <td class="td_form"> <input type="hidden" th:field="*{codigo}"/></td>	
+	            </tr>
+                <tr>
+               		<td class="td_form"> <label>Nombre: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{name}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Clasificación: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{classification}"></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Designación: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{designation}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Media de altura: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{averageHeight}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Esperanza de vida: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{averageLifespan}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Color de piel: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{skinColors}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Color de pelo: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{hairColors}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Color de ojos: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{eyeColors}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Lenguaje: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{language}" maxlength=100/></td>	
+	            </tr>
+	           <tr>
+               		<td class="td_form"> <label>Edición: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{edited}" th:readonly="*{edited}"/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Creación: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{created}" th:readonly="*{created}"/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Planeta: </label> </td>    
+	                <td class="td_form"><select th:field="${species.planets}"> 
+	                	<option th:each="p :${planets}" th:value="${p.getCodigo()}" th:text="${p.name}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Personajes: </label> </td>    
+	                <td class="td_form"><select th:field="${species.people}" multiple="multiple"> 
+	                	<option th:each="pe :${people}" th:value="${pe.getCodigo()}" th:text="${pe.name}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	    
+	             <tr>
+	                <td>
+	                    <button class="submit_button" type="submit">Registrar</button>
+	                </td>
+	            </tr>
+	            
+		        </table>
+		    </fieldset>
+		</form>
+		<table class="table_form">
+	       <tr>
+	           <td class="td_form"><a class="back_button" th:href="@{/species}">Volver</a></td>
+	       </tr>
+    	</table>
+	</body>
+</html>

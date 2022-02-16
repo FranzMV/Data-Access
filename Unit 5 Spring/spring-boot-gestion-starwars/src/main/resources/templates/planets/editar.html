@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+		<title th:text= "${title}"></title>
+	</head>
+	<body>
+		<h1 th:text="${title}"></h1>	
+		<form th:action="@{/planets/update}" th:object="${planets}" method="post">
+		    <fieldset>
+		        <legend>Datos del planeta</legend>
+		        <table class="table_form">
+		        <tr>
+               		<td class="td_form"> <label></label> </td>    
+	                <td class="td_form"> <input type="hidden" th:field="*{codigo}"/></td>	
+	            </tr>
+                <tr>
+               		<td class="td_form"> <label>Nombre: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{name}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Diámetro: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{diameter}"></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Periodo de rotación: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{rotationPeriod}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Periodo obital: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{orbitalPeriod}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Gravedad: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{gravity}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Población: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{population}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Clima: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{climate}" maxlength=100/></td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Terreno: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{terrain}" maxlength=100/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Superficie de agua: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{surfaceWater}" maxlength=100></td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Edición: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{edited}" th:readonly="*{edited}"/></td>	
+	            </tr>
+	            <tr>
+               		<td class="td_form"> <label>Creación: </label> </td>    
+	                <td class="td_form"><input type="text" th:field="*{created}" th:readonly="*{created}"/></td>	
+	            </tr>
+	            <tr>
+	            <tr>
+               		<td class="td_form"> <label>Especie: </label> </td>    
+	                <td class="td_form"><select th:field="${planets.species}" multiple="multiple"> 
+	                	<option th:each="s :${species}" th:value="${s.codigo}" th:text="${s.name}"/>
+	                	</select>
+	                </td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Personajes: </label> </td>    
+	                <td class="td_form"><select th:field="${planets.people}" multiple="multiple"> 
+	                	<option th:each="pe :${people}" th:value="${pe.codigo}" th:text="${pe.name}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	             <tr>
+               		<td class="td_form"> <label>Films: </label> </td>    
+	                <td class="td_form"><select th:field="${planets.films}" multiple="multiple"> 
+	                	<option th:each="f :${films}" th:value="${f.codigo}" th:text="${f.title}">
+	                	</option>
+	                	</select>
+	                </td>	
+	            </tr>
+	             <tr>
+	                <td>
+	                    <button class="submit_button" type="submit">Registrar</button>
+	                </td>
+	            </tr>
+	            
+		        </table>
+		    </fieldset>
+		</form>
+		<table class="table_form">
+	       <tr>
+	           <td class="td_form"><a class="back_button" th:href="@{/planets}">Volver</a></td>
+	       </tr>
+    	</table>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+</head>
+<body>
+	<h1 th:text="${title}"></h1>
+	
+		<div th:if="${starships.isEmpty()}">No hay naves en la lista</div>
+		
+		<table class="table_lista" th:if="${not starships.isEmpty()}">
+			<thead>
+				<tr>
+					<th class="th_lista">Código</th>
+					<th class="th_lista">Nombre</th>
+					<th class="th_lista">Modelo</th>
+					<th class="th_lista">Clase de nave</th>
+					<th class="th_lista">Creador</th>
+					<th class="th_lista">Coste en créditos</th>
+					<th class="th_lista">Tamaño</th>
+					<th class="th_lista">Tripulación</th>
+					<th class="th_lista">Pasajeros</th>
+					<th class="th_lista">Velocidad máx atmosférica</th>
+					<th class="th_lista">Rango hyperdrive</th>
+					<th class="th_lista">MGLT</th>
+					<th class="th_lista">Capacidad carga</th>
+					<th class="th_lista">Consumibles</th>
+					<th class="th_lista">Creación</th>
+					<th class="th_lista">Edición</th>
+					<th class="th_lista">Películas</th>
+					<th class="th_lista">Personajes</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="s: ${starships}">
+						<td class="td_lista" th:text="${s.codigo}"></td>
+						<td class="td_lista" th:text="${s.name}"></td>
+						<td class="td_lista" th:text="${s.model}"></td>
+						<td class="td_lista" th:text="${s.starshipClass}"></td>
+						<td class="td_lista" th:text="${s.manufacturer}"></td>
+						<td class="td_lista" th:text="${s.costInCredits}"></td>
+						<td class="td_lista" th:text="${s.length}"></td>
+						<td class="td_lista" th:text="${s.crew}"></td>
+						<td class="td_lista" th:text="${s.passengers}"></td>
+						<td class="td_lista" th:text="${s.maxAtmospheringSpeed}"></td>
+						<td class="td_lista" th:text="${s.hyperdriveRating}"></td>
+						<td class="td_lista" th:text="${s.mglt}"></td>
+						<td class="td_lista" th:text="${s.cargoCapacity}"></td>
+						<td class="td_lista" th:text="${s.consumables}"></td>
+						<td class="td_lista" th:text="${s.created}"></td>
+						<td class="td_lista" th:text="${s.edited}"></td>
+					    <td class="td_lista">
+						    <p th:each="f : ${s.films}">
+						     	<span th:text="${f.title}"></span>
+						    </p>
+					    </td>
+					    <td class="td_lista" >
+						    <p th:each="p : ${s.people}">
+						     	<span th:text="${p.name}"></span>
+						    </p>
+					    </td>
+						<td><a class="del_button" th:href="@{/starships/delete/{codigo} (codigo=${s.codigo})}">Eliminar</a></td>
+						<td><a class="mod_button" th:href="@{/starships/edit/{codigo} (codigo=${s.codigo})}">Modificar</a></td>
+					</tr>
+			</tbody>
+		</table>
+		<br/>
+	    <p class="td_form"><a class="back_button" th:href="@{/starships}">Volver</a></p>
+</body>
+</html>

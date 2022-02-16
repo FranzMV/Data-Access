@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+</head>
+<body>
+	<h1 th:text="${title}"></h1>
+	
+		<div th:if="${planets.isEmpty()}">No hay planetas en la lista</div>
+		
+		<table class="table_lista" th:if="${not planets.isEmpty()}">
+			<thead>
+				<tr>
+					<th class="th_lista">Código</th>
+					<th class="th_lista">Nombre</th>
+					<th class="th_lista">Diámetro</th>
+					<th class="th_lista">Periodo de rotación</th>
+					<th class="th_lista">Periodo orbital</th>
+					<th class="th_lista">Gravedad</th>
+					<th class="th_lista">Población</th>
+					<th class="th_lista">Clima</th>
+					<th class="th_lista">Terreno</th>
+					<th class="th_lista">Superficie acuática</th>
+					<th class="th_lista">Creación</th>
+					<th class="th_lista">Edición</th>
+					<th class="th_lista">Especies</th>
+					<th class="th_lista">Personajes</th>
+					<th class="th_lista">Películas</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="p: ${planets}">
+						<td class="td_lista" th:text="${p.codigo}"></td>
+						<td class="td_lista" th:text="${p.name}"></td>
+						<td class="td_lista" th:text="${p.diameter}"></td>
+						<td class="td_lista" th:text="${p.rotationPeriod}"></td>
+						<td class="td_lista" th:text="${p.orbitalPeriod}"></td>
+						<td class="td_lista" th:text="${p.gravity}"></td>
+						<td class="td_lista" th:text="${p.population}"></td>
+						<td class="td_lista" th:text="${p.climate}"></td>
+						<td class="td_lista" th:text="${p.terrain}"></td>
+						<td class="td_lista" th:text="${p.surfaceWater}"></td>
+						<td class="td_lista" th:text="${p.created}"></td>
+						<td class="td_lista" th:text="${p.edited}"></td>
+					    <td class="td_lista">
+						    <p th:each="s: ${p.species}">
+						     	<span th:text="${s.name}"></span>
+						    </p>
+					    </td>
+					    <td class="td_lista">
+						    <p th:each="pe : ${p.people}">
+						     	<span th:text="${pe.name}"></span>
+						    </p>
+					    </td>
+					    <td class="td_lista">
+						    <p th:each="f : ${p.films}">
+						     	<span th:text="${f.title}"></span>
+						    </p>
+					    </td>
+						<td><a class="del_button" th:href="@{/planets/delete/{codigo} (codigo=${p.codigo})}">Eliminar</a></td>
+						<td><a class="mod_button" th:href="@{/planets/edit/{codigo} (codigo=${p.codigo})}">Modificar</a></td>
+					</tr>
+			</tbody>
+		</table>
+		<br/>
+	    <p class="td_form"><a class="back_button" th:href="@{/planets}">Volver</a></p>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+		<title th:text= "${title}"></title>
+	</head>
+	<body>
+		<h1 th:text="${title}"></h1>	
+		<form th:action="@{/starships/create}" th:object="${starships}" method="post">
+		    <fieldset>
+		        <legend>Datos de la nave</legend>
+		        <table class="table_form">
+		        
+	                <tr>
+	               		<td class="td_form"> <label>Nombre: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{name}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Modelo: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{model}" maxlength=100></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Clase: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{starshipClass}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Creador: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{manufacturer}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Coste en créditos: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{costInCredits}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Tamaño: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{length}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Tripulación: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{crew}" maxlength=100/></td>	
+		            </tr>
+		             <tr>
+	               		<td class="td_form"> <label>Pasajeros: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{passengers}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Velocidad máx atmosférica: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{maxAtmospheringSpeed}" maxlength=100/></td>	
+		            </tr>
+		             <tr>
+	               		<td class="td_form"> <label>Rango de Hyperdirve: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{hyperdriveRating}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>MGLT: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{mglt}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Capacidad de carga: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{cargoCapacity}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Consumibles: </label> </td>    
+		                <td class="td_form"><input type="text" th:field="*{consumables}" maxlength=100/></td>	
+		            </tr>
+		            <tr>
+	               		<td class="td_form"> <label>Personajes: </label> </td>    
+		                <td class="td_form">
+		                <select th:field="${starships.people}" multiple="multiple"> 
+		                	<option th:each="p :${people}" th:value="${p.codigo}" th:text="${p.name}">
+		                	</option>
+		                	
+	                	</select>
+		                </td>	
+		            </tr>
+		             <tr>
+	               		<td class="td_form"> <label>Películas: </label> </td>    
+		                <td class="td_form"><select th:field="${starships.films}" multiple="multiple"> 
+		                	<option th:each="f :${films}" th:value="${f.codigo}" th:text="${f.title}">
+		                	</option>
+		                	</select>
+		                </td>	
+		            </tr>
+	               <tr>
+		                <td>
+		                    <button class="submit_button" type="submit">Registrar</button>
+		                </td>
+            		</tr>
+		        </table>
+		    </fieldset>
+		</form>
+		<table class="table_form">
+	       <tr>
+	           <td class="td_form"><a class="back_button" th:href="@{/staships}">Volver</a></td>
+	       </tr>
+    	</table>
+	</body>
+</html>

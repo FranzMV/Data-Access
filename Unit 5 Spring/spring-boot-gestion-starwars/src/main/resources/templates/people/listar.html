@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+</head>
+<body>
+	<h1 th:text="${title}"></h1>
+	
+		<div th:if="${people.isEmpty()}">No hay personajes en la lista</div>
+		
+		<table class="table_lista" th:if="${not people.isEmpty()}">
+			<thead>
+				<tr>
+					<th class="th_lista">Código</th>
+					<th class="th_lista">Nombre</th>
+					<th class="th_lista">Fecha de nacimiento</th>
+					<th class="th_lista">Género</th>
+					<th class="th_lista">Color de pelo</th>
+					<th class="th_lista">Color de ojos</th>
+					<th class="th_lista">Color de piel</th>
+					<th class="th_lista">Altura</th>
+					<th class="th_lista">Peso</th>
+					<th class="th_lista">Creación</th>
+					<th class="th_lista">Edición</th>
+					<th class="th_lista">Planeta</th>
+					<th class="th_lista">Películas</th>
+					<th class="th_lista">Naves</th>
+					<th class="th_lista">Especie</th>
+					<th class="th_lista">Vehículos</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="p: ${people}">
+						<td class="td_lista" th:text="${p.codigo}"></td>
+						<td class="td_lista" th:text="${p.name}"></td>
+						<td class="td_lista" th:text="${p.birthYear}"></td>
+						<td class="td_lista" th:text="${p.gender}"></td>
+						<td class="td_lista" th:text="${p.hairColor}"></td>
+						<td class="td_lista" th:text="${p.eyeColor}"></td>
+						<td class="td_lista" th:text="${p.skinColor}"></td>
+						<td class="td_lista" th:text="${p.height}"></td>
+						<td class="td_lista" th:text="${p.mass}"></td>
+						<td class="td_lista" th:text="${p.created}"></td>
+						<td class="td_lista" th:text="${p.edited}"></td>
+						<td class="td_lista" th:text="${p.planets.name}"></td>
+					    <td class="td_lista">
+						    <p th:each="f : ${p.films}">
+						     	<span th:text="${f.title}"></span>
+						    </p>
+					    </td>
+					    <td class="td_lista">
+						    <p th:each="s : ${p.starships}">
+						     	<span th:text="${s.name}"></span>
+						    </p>
+					    </td>
+					    <td class="td_lista">
+						    <p th:each="sp : ${p.species}">
+						     	<span th:text="${sp.name}"></span>
+						    </p>
+					    </td>
+					    <td class="td_lista">
+						    <p th:each="v : ${p.vehicles}">
+						     	<span th:text="${v.name}"></span>
+						    </p>
+					    </td>
+						<td><a class="del_button" th:href="@{/people/delete/{codigo} (codigo=${p.codigo})}">Eliminar</a></td>
+						<td><a class="mod_button" th:href="@{/people/edit/{codigo} (codigo=${p.codigo})}">Modificar</a></td>
+					</tr>
+			</tbody>
+		</table>
+		<br/>
+	    <p class="td_form"><a class="back_button" th:href="@{/people}">Volver</a></p>
+</body>
+</html>

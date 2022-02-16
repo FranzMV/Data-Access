@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+</head>
+<body>
+	<h1 th:text="${title}"></h1>
+	
+		<div th:if="${species.isEmpty()}">No hay species en la lista</div>
+		
+		<table class="table_lista" th:if="${not species.isEmpty()}">
+			<thead>
+				<tr>
+					<th class="th_lista">Código</th>
+					<th class="th_lista">Nombre</th>
+					<th class="th_lista">Clasificacón</th>
+					<th class="th_lista">Designación</th>
+					<th class="th_lista">Meida de altura</th>
+					<th class="th_lista">Esperanza de vida</th>
+					<th class="th_lista">Color de ojos</th>
+					<th class="th_lista">Color de pelo</th>
+					<th class="th_lista">Color de piel</th>
+					<th class="th_lista">Lenguaje</th>
+					<th class="th_lista">Creación</th>
+					<th class="th_lista">Edición</th>
+					<th class="th_lista">Planeta</th>
+					<th class="th_lista">Personajes</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<tr th:each="s: ${species}">
+						<td class="td_lista" th:text="${s.codigo}"></td>
+						<td class="td_lista" th:text="${s.name}"></td>
+						<td class="td_lista" th:text="${s.classification}"></td>
+						<td class="td_lista" th:text="${s.designation}"></td>
+						<td class="td_lista" th:text="${s.averageHeight}"></td>
+						<td class="td_lista" th:text="${s.averageLifespan}"></td>
+						<td class="td_lista" th:text="${s.eyeColors}"></td>
+						<td class="td_lista" th:text="${s.hairColors}"></td>
+						<td class="td_lista" th:text="${s.skinColors}"></td>
+						<td class="td_lista" th:text="${s.language}"></td>
+						<td class="td_lista" th:text="${s.created}"></td>
+						<td class="td_lista" th:text="${s.edited}"></td>
+						
+						<td class="td_lista">
+						    <p th:each="p : ${s.planets}">
+						     	<span th:text="${p.name}"></span>
+						    </p>
+					    </td>
+						
+					    <td class="td_lista">
+						    <p th:each="p : ${s.people}">
+						     	<span th:text="${p.name}"></span>
+						    </p>
+					    </td>
+					    
+						<td><a class="del_button" th:href="@{/species/delete/{codigo} (codigo=${s.codigo})}">Eliminar</a></td>
+						<td><a class="mod_button" th:href="@{/species/edit/{codigo} (codigo=${s.codigo})}">Modificar</a></td>
+					</tr>
+			</tbody>
+		</table>
+		<br/>
+	    <p class="td_form"><a class="back_button" th:href="@{/species}">Volver</a></p>
+</body>
+</html>
