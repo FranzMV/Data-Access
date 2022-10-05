@@ -63,12 +63,12 @@ public class SpeciesViewController {
 	 */
 	@GetMapping("/anyadir")
 	public String addSpecies(Model model){
-		model.addAttribute("title", "Añadir especie");
+	        model.addAttribute("title", "Añadir especie");
 		model.addAttribute("name", "Nombre:");
-        model.addAttribute("classification", "Clasificación:");
-        model.addAttribute("designation", "Designación:");
-        model.addAttribute("averageHeight", "Media de altura:");
-        model.addAttribute("averageLifespan", "Esperanza de vida:");
+        	model.addAttribute("classification", "Clasificación:");
+        	model.addAttribute("designation", "Designación:");
+        	model.addAttribute("averageHeight", "Media de altura:");
+        	model.addAttribute("averageLifespan", "Esperanza de vida:");
 		model.addAttribute("eyeColors", "Color de ojos:");
 		model.addAttribute("skinColors", "Color de piel:");
 		model.addAttribute("hairColors", "Color de pelo:");
