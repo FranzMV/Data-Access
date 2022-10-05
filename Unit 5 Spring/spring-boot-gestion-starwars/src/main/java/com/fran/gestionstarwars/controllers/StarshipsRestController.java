@@ -151,7 +151,6 @@ public class StarshipsRestController {
 			
 			updateStarship = starshipService.save(actualStarship);
 			
-			
 		}catch (DataAccessException e) {
 			response.put("mensaje", "Error al conectar con la base de datos");
 			response.put("error", e.getMessage().concat(":")
@@ -204,15 +203,16 @@ public class StarshipsRestController {
 		starshipDTO.setEdited(starship.getEdited());
 		
 		List<Integer> codigoFilms = starship.getFilms().stream()
-											.map(f-> f.getCodigo())
-											.collect(Collectors.toList());
+								.map(f-> f.getCodigo())
+								.collect(Collectors.toList());
+		
 		starshipDTO.setFilms(new HashSet<>(codigoFilms));
 		
 		List<Integer> codigoPeople = starship.getPeople().stream()
-											 .map(p-> p.getCodigo())
-											 .collect(Collectors.toList());
+								  .map(p-> p.getCodigo())
+								  .collect(Collectors.toList());
+
 		starshipDTO.setPeople(new HashSet<>(codigoPeople));
-		
 		
 		return starshipDTO;
 	}
