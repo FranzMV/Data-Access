@@ -50,8 +50,9 @@ public class HelperFunctions {
 	public static int getLastSpeciesId(SpeciesServiceImpl speciesServiceImpl) {
 		List<Species> speciesList = speciesServiceImpl.findAll();
 		Species specie = speciesList.stream()
-									.max(Comparator.comparing(Species :: getCodigo))
-									.orElseThrow(NoSuchElementException::new);
+					     .max(Comparator.comparing(Species :: getCodigo))
+					     .orElseThrow(NoSuchElementException::new);
+		
 		return specie.getCodigo() +1;
 	}
 	
@@ -59,14 +60,16 @@ public class HelperFunctions {
 	public static int getLastPlanetsId(PlanetsServiceImpl planetsServiceImpl) {
 		List<Planets> planetsList = planetsServiceImpl.findAll();
 		Planets planet = planetsList.stream()
-									.max(Comparator.comparing(Planets :: getCodigo))
-									.orElseThrow(NoSuchElementException::new);
+					    .max(Comparator.comparing(Planets :: getCodigo))
+					    .orElseThrow(NoSuchElementException::new);
+		
 		return planet.getCodigo() + 1;
 	}
 	public static String getDate() {
 	  Date date = new Date();  
-      Timestamp ts= new Timestamp(date.getTime());  
-      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
-      return String.valueOf(formatter.format(ts));
+      	  Timestamp ts= new Timestamp(date.getTime());  
+          SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); 
+		
+      	  return String.valueOf(formatter.format(ts));
 	}
 }
