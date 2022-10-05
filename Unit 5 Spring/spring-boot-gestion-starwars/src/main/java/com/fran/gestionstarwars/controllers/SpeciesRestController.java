@@ -84,7 +84,6 @@ public class SpeciesRestController {
 		Map<String, Object> response = new HashMap<>();
 		
 		if(result.hasErrors()) {
-			
 			List<String> errors = result.getFieldErrors()
 					.stream()
 					.map(err -> "El campo '" + err.getField() +"' "+ err.getDefaultMessage())
@@ -118,7 +117,6 @@ public class SpeciesRestController {
 		Map<String, Object> response= new HashMap<>();
 		
 		if(result.hasErrors()) {
-
 			List<String> errors = result.getFieldErrors()
 					.stream()
 					.map(err -> "El campo '" + err.getField() +"' "+ err.getDefaultMessage())
@@ -135,7 +133,6 @@ public class SpeciesRestController {
 		}
 		
 		try {
-			
 			actualSpecie.setCodigo(species.getCodigo());
 			actualSpecie.setPlanets(species.getPlanets());
 			actualSpecie.setName(species.getName());
@@ -150,7 +147,6 @@ public class SpeciesRestController {
 			actualSpecie.setCreated(species.getCreated());
 			actualSpecie.setEdited(species.getEdited());
 			actualSpecie.setPeople(species.getPeople());
-		
 		}catch (DataAccessException e) {
 			response.put("mensaje", "Error al conectar con la base de datos");
 			response.put("error", e.getMessage().concat(":")
@@ -185,7 +181,7 @@ public class SpeciesRestController {
 		SpeciesDTO speciesDTO = new SpeciesDTO();
 		speciesDTO.setCodigo(species.getCodigo());
 		if(species.getPlanets() != null)
-			speciesDTO.setPlanets(species.getPlanets().getCodigo());
+		    speciesDTO.setPlanets(species.getPlanets().getCodigo());
 		//System.out.println(species.getPlanets().getCodigo());
 		speciesDTO.setName(species.getName());
 		speciesDTO.setClassification(species.getClassification());
@@ -200,9 +196,10 @@ public class SpeciesRestController {
 		speciesDTO.setEdited(species.getEdited());
 		
 		List<Integer> codigoPeople = species.getPeople()
-											.stream()
-											.map(p-> p.getCodigo())
-											.collect(Collectors.toList());
+								.stream()
+								.map(p-> p.getCodigo())
+								.collect(Collectors.toList());
+		
 		speciesDTO.setPeople(new HashSet<>(codigoPeople));
 		
 		
