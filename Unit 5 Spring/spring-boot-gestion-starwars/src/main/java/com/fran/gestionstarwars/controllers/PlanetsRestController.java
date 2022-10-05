@@ -197,18 +197,20 @@ public class PlanetsRestController {
 		planetsDTO.setEdited(planets.getEdited());
 		
 		List<Integer> codigoSpecies = planets.getSpecies().stream()
-									.map(s-> s.getCodigo())
-									.collect(Collectors.toList());
+								   .map(s-> s.getCodigo())
+								   .collect(Collectors.toList());
+		
 		planetsDTO.setSpecies(new HashSet<>(codigoSpecies));
 		
 		List<Integer> codigoPeople = planets.getPeople().stream()
-											.map(p-> p.getCodigo())
-											.collect(Collectors.toList());
+								.map(p-> p.getCodigo())
+								.collect(Collectors.toList());
+		
 		planetsDTO.setPeople(new HashSet<>(codigoPeople));
 		
 		List<Integer> codigoFilms = planets.getFilms().stream()
-									.map(p-> p.getCodigo())
-									.collect(Collectors.toList());
+							      .map(p-> p.getCodigo())
+							      .collect(Collectors.toList());
 		
 		planetsDTO.setFilms(new HashSet<>(codigoFilms));
 		return planetsDTO;
