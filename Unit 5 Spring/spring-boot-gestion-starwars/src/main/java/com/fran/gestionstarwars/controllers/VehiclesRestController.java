@@ -129,7 +129,6 @@ public class VehiclesRestController {
 		}
 		
 		try {
-			
 			actualVehicle.setName(vehicles.getName());
 			actualVehicle.setModel(vehicles.getModel());
 			actualVehicle.setVehicleClass(vehicles.getVehicleClass());
@@ -196,16 +195,16 @@ public class VehiclesRestController {
 		vehiclesDTO.setEdited(vehicles.getEdited());
 		vehiclesDTO.setCreated(vehicles.getCreated());
 		
-		List<Integer> codigoFilms = vehicles.getFilms() 
-											.stream()
-											.map(f-> f.getCodigo())
-											.collect(Collectors.toList());
+		List<Integer> codigoFilms = vehicles.getFilms() .stream()
+								.map(f-> f.getCodigo())
+								.collect(Collectors.toList());
+		
 		vehiclesDTO.setFilms(new HashSet<>(codigoFilms));
 		
-		List<Integer> codigoPeople = vehicles.getPeople()
-											 .stream()
-											 .map(p-> p.getCodigo())
-											 .collect(Collectors.toList());
+		List<Integer> codigoPeople = vehicles.getPeople().stream()
+								  .map(p-> p.getCodigo())
+								  .collect(Collectors.toList());
+		
 		vehiclesDTO.setPeople(new HashSet<>(codigoPeople));
 		
 		return vehiclesDTO;
