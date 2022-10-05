@@ -198,28 +198,28 @@ public class PeopleRestController {
 		peopleDTO.setCreated(people.getCreated());
 		peopleDTO.setEdited(people.getEdited());
 		
-		List<Integer> codigoStraships = people.getStarships()
-											  .stream()
-											  .map(p-> p.getCodigo())
-											  .collect(Collectors.toList());
+		List<Integer> codigoStraships = people.getStarships().stream()
+								      .map(p-> p.getCodigo())
+								      .collect(Collectors.toList());
+		
 		peopleDTO.setStarshisps(new HashSet<>(codigoStraships));
 		
-		List<Integer> codigoVehicles = people.getVehicles()
-											 .stream()
-											 .map(p-> p.getCodigo())
-											 .collect(Collectors.toList());
+		List<Integer> codigoVehicles = people.getVehicles().stream()
+								   .map(p-> p.getCodigo())
+								   .collect(Collectors.toList());
+		
 		peopleDTO.setVehicles(new HashSet<>(codigoVehicles));
 				
-		List<Integer> codigoSpecies = people.getSpecies()
-											.stream()
-											.map(p-> p.getCodigo())
-											.collect(Collectors.toList());
+		List<Integer> codigoSpecies = people.getSpecies().stream()
+								 .map(p-> p.getCodigo())
+								 .collect(Collectors.toList());
+		
 		peopleDTO.setSpecies(new HashSet<>(codigoSpecies));
 			
-		List<Integer> codigoFilms = people.getFilms()
-										  .stream()
-	 				  					  .map(p-> p.getCodigo())
-	 				  					  .collect(Collectors.toList());
+		List<Integer> codigoFilms = people.getFilms().stream()
+	 				  		     .map(p-> p.getCodigo())
+	 				  		     .collect(Collectors.toList());
+		
 		peopleDTO.setFilms(new HashSet<>(codigoFilms));
 		
 		return peopleDTO;
